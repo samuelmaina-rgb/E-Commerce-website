@@ -5,6 +5,7 @@ import ProductDetails from "./ProductDetails"
 import Cart from "./Cart"
 import SearchFilter from "./SearchFilter"
 import ProtectedRoute from "./ProtectedRoute"
+import { Routes, Route } from "react-router-dom"
 
 function App() {
     return (
