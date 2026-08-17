@@ -1,7 +1,8 @@
-
+import { Link } from "react-router-dom";
 function ProductCard({ product }) {
     return (
-        <div className="border p-4">
+        <Link to={`/products/${product.id}`}>
+            <div className="border p-4">
             <img
                 src={product.image}
                 alt={product.title}
@@ -16,6 +17,8 @@ function ProductCard({ product }) {
                 ${product.price}
             </p>
         </div>
+        </Link>
+        
     );
 }
 
