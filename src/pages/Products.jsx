@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../ProductCard";
+import SearchFilter from "../SearchFilter";
 
 function Products() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [search,setSearch] = useState("");
 
     useEffect(() => {
         async function fetchProducts() {
@@ -37,12 +39,19 @@ function Products() {
     if (error) {
         return <h1>Error: {error}</h1>;
     }
+    const filteredProducts = products.filter((product)=>
+    product.title.toLowerCase().includes(search.toLowerCase())
+);
 
     return (
         <div>
             <h1>Products Page</h1>
+            <SearchFilter
+            search={search}
+            setSearch={setSearch}
+            />
 
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
     <ProductCard
         key={product.id}
         product={product}
